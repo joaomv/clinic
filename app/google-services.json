@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "404412974859",
+    "firebase_url": "https://agenda-publica-3fc2d.firebaseio.com",
+    "project_id": "agenda-publica-3fc2d",
+    "storage_bucket": "agenda-publica-3fc2d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:404412974859:android:2dab927efde9fc59",
+        "android_client_info": {
+          "package_name": "com.example.inovacao.clinicmobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "404412974859-ii084occmb2loaefnir59111nfj645d5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.inovacao.clinicmobile",
+            "certificate_hash": "68369f5e4b8a1918602f6287deae9f1b7cdc2c59"
+          }
+        },
+        {
+          "client_id": "404412974859-rc5q787vmspi5lqpv39levd8tucmqka7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlKlE5-dry16aHK0NJbtcYGxmupIEY6Jk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "404412974859-rc5q787vmspi5lqpv39levd8tucmqka7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
