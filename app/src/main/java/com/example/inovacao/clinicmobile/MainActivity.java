@@ -16,8 +16,12 @@ import android.widget.TextView;
 
 import com.example.inovacao.clinicmobile.fragment.DoctorsFragment;
 import com.example.inovacao.clinicmobile.models.Doctor;
+import com.example.inovacao.clinicmobile.models.Location;
+import com.example.inovacao.clinicmobile.models.Specialite;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -84,18 +88,40 @@ public class MainActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         // [END create_database_reference]
 
-        //writeNewUser("teste", "Teste");
+        //writeNewUser();
+        //writeSpecialities();
+
     }
 
-    private void writeNewUser(String userId, String name) {
+    private void writeNewUser() {
 
+        Location location = new Location(-8.123133, -34.904368);
 
         DatabaseReference doctorsRef = mDatabase.child("doctors");
-        Map<String, Doctor> doctors = new HashMap<>();
-        doctors.put("alan", new Doctor("Alan Silva"));
-        doctors.put("silva", new Doctor("Silva Alan"));
+        Doctor doctor1 = new Doctor("Dr. Shirin Peters", "acupuncturist", "e7fa629b-c37b-4676-8bb4-7b6eb2a050a3zoom.jpg", location);
+        doctorsRef.push().setValue(doctor1);
 
-        doctorsRef.setValue(doctors);
+        Doctor doctor2 = new Doctor("Dr. Michele Martinho", "cardiologist", "8693zoom.jpg", location);
+        doctorsRef.push().setValue(doctor2);
+
+        Doctor doctor3 = new Doctor("Dr. Ahmadur Rahman", "allergist", "8c986ecb-3cc9-4c50-819b-8eb58e30551czoom.jpg", location);
+        doctorsRef.push().setValue(doctor3);
+
+        Doctor doctor4 = new Doctor("Dr. Sydney Mehl", "endrocrinologist", "a40fdc2c-fb74-406d-80f0-e1474f21a819zoom.jpg", location);
+        doctorsRef.push().setValue(doctor4);
+
+    }
+
+    private void writeSpecialities() {
+
+        DatabaseReference specialitiesRef = mDatabase.child("specialities");
+        Map<String, Specialite> specialities = new HashMap<>();
+        specialities.put("acupuncturist", new Specialite("Acupuntura", "ramo da medicina tradicional chinesa e um método de tratamento chamado complementar de acordo com a nova terminologia da OMS."));
+        specialities.put("allergist", new Specialite("Alergia e Imunologia", "diagnóstico e tratamento das doenças alérgicas e do sistema imunológico."));
+        specialities.put("cardiologist", new Specialite("Cardiologia", "aborda as doenças relacionadas com o coração e sistema vascular."));
+        specialities.put("endrocrinologist", new Specialite("Endocrinologia e Metabologia", "é a área da Medicina responsável pelo cuidados aos hormônios, crescimento e glândulas como adrenal, tireoide, hipófise, pâncreas endócrino e outros."));
+
+        specialitiesRef.setValue(specialities);
     }
 
 }

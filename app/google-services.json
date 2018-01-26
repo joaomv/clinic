@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "404412974859-in2g6ia5vqqe7c6nn3t0sau4d4aoiac6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.inovacao.clinicmobile",
+            "certificate_hash": "34e63ad9eefbffd98612ccdb963e0ce4f0ffaf62"
+          }
+        },
+        {
           "client_id": "404412974859-ii084occmb2loaefnir59111nfj645d5.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

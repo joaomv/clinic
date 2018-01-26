@@ -3,8 +3,8 @@
 
     <!-- Strings related to botton navegation -->
     <string name="title_activity_main">MainActivity</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_medic">Médicos</string>
+    <string name="title_dashboard">Buscar</string>
+    <string name="title_medic">Meus Médicos</string>
     <string name="title_profile">Perfil</string>
 
     <!-- Strings related to login -->

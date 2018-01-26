@@ -1,6 +1,10 @@
 package com.example.inovacao.clinicmobile.fragment;
 
+import android.location.Address;
+import android.location.Geocoder;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,15 +13,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.inovacao.clinicmobile.Helpers.CircleTransform;
 import com.example.inovacao.clinicmobile.R;
 import com.example.inovacao.clinicmobile.models.Doctor;
 import com.example.inovacao.clinicmobile.viewholder.DoctorViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
+import java.util.Locale;
 
 
 /**
@@ -72,9 +85,43 @@ public class DoctorsFragment extends Fragment {
 
         mAdapter = new FirebaseRecyclerAdapter<Doctor, DoctorViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(DoctorViewHolder holder, int position, Doctor model) {
+            protected void onBindViewHolder(final DoctorViewHolder holder, int position, Doctor model) {
+
+                FirebaseStorage storage = FirebaseStorage.getInstance();
+                StorageReference storageRef = storage.getReference().child("doctors/" + model.photoUrl);
+
+                storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        // Pass it to Picasso to download, show in ImageView and caching
+                        Picasso.with(getActivity())
+                                .load(uri.toString())
+                                .transform(new CircleTransform())
+                                .resize(90, 90)
+                                .centerCrop()
+                                .into(holder.photoView);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        // Handle any errors
+                    }
+                });
+
                 final DatabaseReference doctorKey = getRef(position);
                 holder.bindToDoctor(model);
+                String regioName = "";
+                Geocoder gcd = new Geocoder(getActivity(), Locale.getDefault());
+                try {
+                    List<Address> addresses = gcd.getFromLocation(model.location.latitude, model.location.longitude, 1);
+                    if (addresses.size() > 0) {
+                        regioName = addresses.get(0).getLocality() + " - " + addresses.get(0).getCountryName();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                holder.addressView.setText(regioName);
+
 
             }
 
