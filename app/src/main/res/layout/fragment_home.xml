@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activated">
+
+    <LinearLayout
+        android:id="@+id/title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
+            android:gravity="center"
+            style="@style/Base.TextAppearance.AppCompat.Display1"
+            android:text="Agendamento?\nProcure um médico." />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/looking_view"
+        style="@style/HomeContainerView"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/title_view"
+        app:layout_constraintStart_toStartOf="@+id/title_view"
+        app:layout_constraintTop_toBottomOf="@+id/title_view">
+
+        <TextView
+            style="@style/HomeTextView"
+            android:text="@string/home_looking_label" />
+
+        <EditText
+            android:id="@+id/et_looking"
+            style="@style/HomeEditView"
+            android:text="Name" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/location_view"
+        style="@style/HomeContainerView"
+        app:layout_constraintEnd_toEndOf="@+id/looking_view"
+        app:layout_constraintStart_toStartOf="@+id/looking_view"
+        app:layout_constraintTop_toBottomOf="@+id/looking_view" >
+
+        <TextView
+            style="@style/HomeTextView"
+            android:text="@string/home_location_label" />
+
+        <EditText
+            android:id="@+id/et_location"
+            style="@style/HomeEditView"
+            android:text="Name" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/when_view"
+        style="@style/HomeContainerView"
+        app:layout_constraintEnd_toEndOf="@+id/location_view"
+        app:layout_constraintStart_toStartOf="@+id/location_view"
+        app:layout_constraintTop_toBottomOf="@+id/location_view" >
+
+        <TextView
+            style="@style/HomeTextView"
+            android:text="@string/home_when_label" />
+
+        <EditText
+            android:id="@+id/et_date"
+            style="@style/HomeEditView"
+            android:text="Name" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/who_view"
+        style="@style/HomeContainerView"
+        app:layout_constraintEnd_toEndOf="@+id/when_view"
+        app:layout_constraintStart_toStartOf="@+id/when_view"
+        app:layout_constraintTop_toBottomOf="@+id/when_view" >
+
+        <TextView
+            style="@style/HomeTextView"
+            android:text="@string/home_who_label" />
+
+        <EditText
+            android:id="@+id/et_insurance"
+            style="@style/HomeEditView"
+            android:text="Name" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/find_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/home_find_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/who_view"
+        android:background="@color/colorPrimaryLight"
+        android:textColor="@color/colorPrimaryDark"
+        style="?android:attr/borderlessButtonStyle"/>
+
+</android.support.constraint.ConstraintLayout>

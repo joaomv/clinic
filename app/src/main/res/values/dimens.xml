@@ -4,4 +4,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <dimen name="design_bottom_navigation_height" tools:override="true">56dp</dimen>
+    
+    <dimen name="default_margin">8dp</dimen>
 </resources>

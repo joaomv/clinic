@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.inovacao.clinicmobile.fragment.DoctorsFragment;
+import com.example.inovacao.clinicmobile.fragment.HomeFragment;
 import com.example.inovacao.clinicmobile.models.Doctor;
 import com.example.inovacao.clinicmobile.models.Location;
 import com.example.inovacao.clinicmobile.models.Specialite;
@@ -41,13 +42,17 @@ public class MainActivity extends AppCompatActivity {
             Fragment selectedFragment = null;
             switch (item.getItemId()) {
                 case R.id.navigation_dashboard:
+                    selectedFragment = new HomeFragment();
+                    FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
+                    transaction1.replace(R.id.frame_layout, selectedFragment);
+                    transaction1.commit();
                     //mTextMessage.setText(R.string.title_dashboard);
                     return true;
                 case R.id.navigation_medic:
                     selectedFragment = new DoctorsFragment();
-                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame_layout, selectedFragment);
-                    transaction.commit();
+                    FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
+                    transaction2.replace(R.id.frame_layout, selectedFragment);
+                    transaction2.commit();
                     //mTextMessage.setText(R.string.title_dashboard);
                     return true;
                 case R.id.navigation_profile:

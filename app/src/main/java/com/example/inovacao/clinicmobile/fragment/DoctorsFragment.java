@@ -97,7 +97,7 @@ public class DoctorsFragment extends Fragment {
                         Picasso.with(getActivity())
                                 .load(uri.toString())
                                 .transform(new CircleTransform())
-                                .resize(90, 90)
+                                .resize(120, 120)
                                 .centerCrop()
                                 .into(holder.photoView);
                     }
