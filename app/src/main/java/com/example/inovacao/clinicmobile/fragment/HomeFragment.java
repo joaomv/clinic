@@ -4,10 +4,12 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
@@ -28,6 +30,12 @@ public class HomeFragment extends Fragment {
 
     private static final String TAG = "HomeFragment";
 
+    DataPassListener mCallback;
+
+    public interface DataPassListener{
+        public void passData(String data);
+    }
+
     // FIREBASE DATABASE
     private DatabaseReference mDatabase;
 
@@ -35,6 +43,8 @@ public class HomeFragment extends Fragment {
     private EditText mLocationEditText;
     private EditText mDateEditText;
     private EditText mInsuranceEditText;
+
+    private Button mFindButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -50,6 +60,28 @@ public class HomeFragment extends Fragment {
         setListennersFilters(rootView);
         // [END setup_listeners_filters]
 
+        mFindButton = rootView.findViewById(R.id.find_button);
+        mFindButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Create fragment and give it an argument specifying the article it should show
+                ScheduleFragment newFragment = new ScheduleFragment();
+//                Bundle args = new Bundle();
+//                args.putInt(ScheduleFragment.ARG_POSITION, position);
+//                newFragment.setArguments(args);
+
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+
+                // Replace whatever is in the fragment_container view with this fragment,
+                // and add the transaction to the back stack so the user can navigate back
+                transaction.replace(R.id.frame_layout, newFragment);
+                transaction.addToBackStack(null);
+
+                // Commit the transaction
+                transaction.commit();
+
+            }
+        });
         return rootView;
     }
 

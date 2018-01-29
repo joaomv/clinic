@@ -68,6 +68,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (findViewById(R.id.frame_layout) != null) {
+            // Create a new Fragment to be placed in the activity layout
+            HomeFragment firstFragment = new HomeFragment();
+
+            // In case this activity was started with special instructions from an
+            // Intent, pass the Intent's extras to the fragment as arguments
+            firstFragment.setArguments(getIntent().getExtras());
+
+            // Add the fragment to the 'fragment_container' FrameLayout
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.frame_layout, firstFragment).commit();
+        }
+
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
 
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) navigation.getChildAt(0);
